@@ -1,0 +1,187 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 330 100% 97%;
+    --foreground: 0 0% 20%;
+
+    --card: 330 100% 97%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 330 100% 97%;
+    --popover-foreground: 0 0% 20%;
+
+    --primary: 345 100% 60%;
+    --primary-foreground: 330 100% 97%;
+
+    --secondary: 200 93% 73%;
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 330 30% 90%;
+    --muted-foreground: 0 0% 50%;
+
+    --accent: 59 100% 71%;
+    --accent-foreground: 0 0% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 330 100% 97%;
+
+    --border: 330 30% 85%;
+    --input: 330 30% 85%;
+    --ring: 345 100% 60%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 0 0% 15%;
+    --foreground: 330 20% 90%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 330 20% 90%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 330 20% 90%;
+
+    --primary: 345 70% 60%;
+    --primary-foreground: 330 20% 90%;
+
+    --secondary: 200 70% 50%;
+    --secondary-foreground: 330 20% 90%;
+
+    --muted: 0 0% 25%;
+    --muted-foreground: 330 10% 70%;
+
+    --accent: 59 70% 50%;
+    --accent-foreground: 330 20% 90%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 330 20% 90%;
+
+    --border: 0 0% 30%;
+    --input: 0 0% 30%;
+    --ring: 345 70% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-pink-50 text-foreground font-sans;
+    background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8e6f0" /><circle cx="50" cy="50" r="40" fill="%23f8e6f0" stroke="%23ffc0cb" stroke-width="1" stroke-opacity="0.2" /></svg>');
+    background-size: 100px;
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-semibold;
+  }
+}
+
+@layer components {
+  .manga-card {
+    @apply bg-white rounded-lg shadow-xl border-2 border-pink-200 overflow-hidden transform transition-all duration-300 hover:shadow-2xl;
+  }
+
+  .manga-header {
+    @apply bg-pink-100 p-4 border-b-2 border-pink-200;
+  }
+  
+  .page {
+    @apply bg-white rounded-lg shadow-xl border-2 border-pink-200 overflow-hidden transform transition-all duration-500;
+    perspective: 1000px;
+    backface-visibility: hidden;
+  }
+  
+  .page-content {
+    @apply p-8;
+  }
+  
+  .ingredient-item {
+    @apply relative flex items-center gap-3 p-3 rounded-md hover:bg-pink-50 transition-all cursor-pointer;
+  }
+  
+  .ingredient-item:hover .ingredient-tooltip {
+    @apply block;
+  }
+  
+  .ingredient-tooltip {
+    @apply hidden absolute -top-16 left-0 w-64 p-3 bg-white/90 backdrop-blur-sm border-2 border-pink-200 shadow-md rounded-md z-10 animate-fade-in;
+  }
+  
+  .step-card {
+    @apply bg-white/90 backdrop-blur-sm p-6 rounded-lg border-2 border-pink-200 shadow-md mb-4 hover:shadow-lg transition-all;
+  }
+  
+  .nav-link {
+    @apply relative hover:text-pink-500 transition-colors;
+  }
+  
+  .nav-link:after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-pink-300 transition-all duration-300;
+  }
+  
+  .nav-link:hover:after {
+    @apply w-full;
+  }
+
+  .manga-section-title {
+    @apply relative inline-block font-bold text-3xl md:text-4xl text-pink-500 mb-6;
+  }
+
+  .manga-section-title:after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-1 bg-pink-300 rounded-full;
+  }
+
+  .manga-button {
+    @apply bg-pink-500 text-white px-6 py-3 rounded-full font-bold shadow-md hover:bg-pink-600 transition-all transform hover:scale-105 active:scale-95;
+  }
+
+  .manga-card-outline {
+    @apply border-2 border-black rounded-lg p-4 relative;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.8);
+  }
+
+  .manga-tag {
+    @apply inline-block px-3 py-1 bg-pink-100 text-pink-600 rounded-full font-medium text-sm border border-pink-300;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(252, 231, 243, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(249, 168, 212, 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(249, 168, 212, 0.8);
+}
+
+/* 3D Book styling */
+.book-container {
+  perspective: 1000px;
+}
+
+.book {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
